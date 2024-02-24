@@ -1,0 +1,11 @@
+{"name": "sillysort",
+"productName": "SILLYsort",
+"version": "1.0.0",
+"description": "App to sort files",
+"main": "main.js",
+"author": "Bartholmew",
+"license": "UNLICENSED",
+"scripts": {
+  "start": "electron ."
+}
+}
