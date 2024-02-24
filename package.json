@@ -1,0 +1,11 @@
+{
+    "dependencies": {
+      "@robzzson/silhouette": "^0.0.7",
+      "@xenova/transformers": "^2.15.1",
+      "density-clustering": "^1.3.0",
+      "kmeansjs": "^0.0.3",
+      "ml-kmeans": "^6.0.0"
+    },
+    "type": "module"
+  }
+  
