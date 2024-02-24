@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="script-src" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -11,10 +12,15 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/script.js" defer></script>
-    <title>Image Resizer</title>
+    <script src="js/renderer.js" defer></script>
+    <title>SILLYsort</title>
   </head>
-  <body class="bg-teal-700">
+  <style>
+    body {
+      background-color: rgb(155, 225, 221);
+    }
+  </style>
+  <body>
     <div
       class="max-w-xl m-auto h-screen flex flex-col align-center justify-center"
     >
@@ -23,7 +29,7 @@
           class="w-64 flex flex-col items-center px-4 py-7 bg-white text-gray-500 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:text-teal-800"
         >
           <img src="./images/logo.svg" width="32" />
-          <span class="mt-2 leading-normal">Select an image to resize</span>
+          <span class="mt-2 leading-normal">Select Directory</span>
           <input id="img" type="file" class="hidden" />
         </label>
       </div>
