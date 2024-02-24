@@ -9,7 +9,7 @@ function createMainWindow() {
         height: 600
     });
 
-    mainWindow.loadFile(path.join(_dirname, './renderer/index.html'));
+    mainWindow.loadFile(path.join(__dirname, 'renderer/index.html'));
 }
 app.whenReady().then(() => {
     createMainWindow();
