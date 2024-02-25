@@ -47,7 +47,7 @@ function getDirectory() {
     // return directory;
     let relativeDirectory = files[0].webkitRelativePath;
     let relativeDirectories = relativeDirectory.split("/");
-    if (isMac) {
+    if (navigator.userAgent.indexOf('Mac OS X') != -1) {
         directories = fullDirectory.split("/");
     } else {
         directories = fullDirectory.split("\\");
