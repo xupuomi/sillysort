@@ -1,13 +1,8 @@
+const { ipcRenderer } = require('electron'); 
 
-
-
-
-
-
-
-
-
-
+document.getElementById('sort-button').addEventListener('click', () => {
+    ipcRenderer.send('sort');
+});
 
 
 

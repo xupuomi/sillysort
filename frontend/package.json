@@ -7,6 +7,10 @@
     "author": "Bartholmew",
     "license": "UNLICENSED",
     "scripts": {
-    "start": "electron ."
+        "start": "electron ."
+    },
+    "dependencies": {
+        "electron": "^29.0.1",
+        "node-fetch": "^2.6.1"
     }
 }

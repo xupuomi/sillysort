@@ -1,87 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; style-src 'self' *.googleapis.com 'unsafe-inline' https://fonts.googleapis.com;"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="js/renderer.js" defer></script>
-    <title>SILLYsort</title>
-    <style>
-      .header {
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy"
+    content="script-src 'self' 'unsafe-inline'; style-src 'self' *.googleapis.com 'unsafe-inline' https://fonts.googleapis.com;" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/renderer.js" defer></script>
+  <button id="myButton">Click me</button>
+  <title>SILLYsort</title>
+  <style>
+    .header {
       background-color: rgb(155, 225, 221);
       height: 33.33vh;
       margin-top: 0;
       padding: 0;
-      position: relative; 
+      position: relative;
     }
 
     .center {
-      position: absolute; /* Position absolute for precise placement */
-      top: 30%; /* Positioning from the top */
-      left: 60%; /* Positioning from the left */
-      transform: translate(-50%, -50%); /* Centering the image */
+      position: absolute;
+      /* Position absolute for precise placement */
+      top: 30%;
+      /* Positioning from the top */
+      left: 60%;
+      /* Positioning from the left */
+      transform: translate(-50%, -50%);
+      /* Centering the image */
     }
 
     .buttons {
-      position: absolute; /* Position absolute for precise placement */
-      top: 60%; /* Positioning from the top */
-      left: 50%; /* Positioning from the left */
-      transform: translate(-50%, -50%); /* Centering the image */
-    }
-    </style>
-    
-    <div class="header"></div>
-
-  </head>
-  <style>
-    body {
-      background-color: white;
+      position: absolute;
+      /* Position absolute for precise placement */
+      top: 60%;
+      /* Positioning from the top */
+      left: 50%;
+      /* Positioning from the left */
+      transform: translate(-50%, -50%);
+      /* Centering the image */
     }
   </style>
-  <body>
-    <!-- <div
+
+  <div class="header"></div>
+
+</head>
+<style>
+  body {
+    background-color: white;
+  }
+</style>
+
+<body>
+  <!-- <div
       class="max-w-xl m-auto h-screen flex flex-col align-center justify-center"
     > -->
-    <div style="position: absolute; top: 10px; left: 100px">
-      <img src="./images/BartholmewCoquette.png" width="400" />
+  <div style="position: absolute; top: 10px; left: 100px">
+    <img src="./images/BartholmewCoquette.png" width="400" />
+  </div>
+
+  <div class="flex flex-col w-full items-center justify-center bg-grey-lighter">
+    <label
+      class="w-64 flex flex-col items-center px-4 py-7 bg-white text-gray-500 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:text-teal-800">
+
+      <span class="mt-2 leading-normal">Upload</span>
+      <input id="filepicker" type="file" class="hidden" webkitdirectory directory multiple />
+      <button onclick="USER_DEFINED_FILE_PATH = getDirectory()"></button>
+      <div id="currentDirectory"></div>
+      <!-- <input id="filepicker" type="file" class="hidden"> -->
+    </label>
+  </div>
+
+  <!-- Form -->
+  <form id="img-form">
+
+    <!-- Button -->
+    <div class="mt-6">
+      <button id="sort-button" type="button"
+        class="w-80 m-auto flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-500 hover:bg-teal-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        Sort
+      </button>
     </div>
 
-    <div class="flex flex-col w-full items-center justify-center bg-grey-lighter">
-      <label
-        class="w-64 flex flex-col items-center px-4 py-7 bg-white text-gray-500 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:text-teal-800"
-      >
-
-        <span class="mt-2 leading-normal">Upload</span>
-        <input id="filepicker" type="file" class="hidden" webkitdirectory directory multiple/>
-        <button onclick="USER_DEFINED_FILE_PATH = getDirectory()"></button>
-        <div id="currentDirectory"></div>
-        <!-- <input id="filepicker" type="file" class="hidden"> -->
-      </label>
-    </div>
-
-      <!-- Form -->
-      <form id="img-form">
-
-        <!-- Button -->
-        <div class="mt-6">
-            <button
-              type="button"
-              onclick="goToSortWindow()"
-              class="w-80 m-auto flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-500 hover:bg-teal-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            >
-              Sort
-            </button>
-        </div>
-
-        <!-- <script>
+    <!-- <script>
           function fetchData() {
             fetch('/backend/filestructure.json')
               .then(response => response.json())
@@ -93,16 +98,14 @@
               });
           }
         </script> -->
-        <div class="mt-4">
-          <button
-            type="button"
-            class="w-80 m-auto flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-500 hover:bg-teal-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            Clean
-          </button>
-        </div>
+    <div class="mt-4">
+      <button type="button"
+        class="w-80 m-auto flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-500 hover:bg-teal-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        Clean
+      </button>
+    </div>
 
-          <!-- <script>
+    <!-- <script>
             function fetchData() {
               fetch('/backend/filestructure.json')
                 .then(response => response.json())
@@ -115,8 +118,9 @@
             }
           </script> -->
 
-      </form>
+  </form>
 
-    </div>
-  </body>
+  </div>
+</body>
+
 </html>
