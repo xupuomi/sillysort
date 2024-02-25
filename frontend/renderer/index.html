@@ -12,42 +12,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <script src="js/renderer.js" defer></script>
-  <button id="myButton">Click me</button>
+  <button id="myButton"></button>
   <title>SILLYsort</title>
   <style>
     .header {
-      background-color: rgb(155, 225, 221);
-      height: 33.33vh;
-      margin-top: 0;
-      padding: 0;
-      position: relative;
-    }
+    background-color: rgb(155, 225, 221);
+    height: 33.33vh;
+    margin-top: 0;
+    padding: 0;
+    position: relative; 
+  }
+  
+  .header img {
+    position: absolute;
+    top: 70%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+  }
 
-    .header img {
-      position: absolute;
-      top: 70%;
-      left: 20%;
-      transform: translate(-50%, -50%);
-    }
+  .image-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
 
-    .image-button {
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
+  .step {
+    font-size: 1.1em;
+  }
 
-    .step {
-      font-size: 1.1em;
-    }
   </style>
-
+  
   <div class="header">
     <div>
-      <img src="./images/HackButtonsLogo.png" width="400" />
-      <div style="position: absolute; top: 405px; left: 70px; color: gray">
+      <img src="./images/HackButtonsLogo.png" width="400"/>
+      <div style = "position: absolute; top: 390px; left: 60px; color: gray" >
         <p class="step"> step 1: upload file folder </p>
       </div>
-      <div style="position: absolute; top: 525px; left: 890px; color: gray">
+      <div style = "position: absolute; top: 500px; left: 890px; color: gray" >
         <p class="step">step 2: click sort!</p>
       </div>
     </div>
@@ -56,15 +57,7 @@
 </head>
 <style>
   body {
-    background-color: white;
-  }
-</style>
-
-<div class="header"></div>
-
-</head>
-<style>
-  body {
+    margin: 0;
     background-color: white;
   }
 </style>
