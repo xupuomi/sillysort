@@ -14,70 +14,71 @@
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/renderer.js" defer></script>
     <title>SILLYsort</title>
+    <style>
+      .header {
+      background-color: rgb(155, 225, 221);
+      height: 33.33vh;
+      margin-top: 0;
+      padding: 0;
+      position: relative; 
+    }
+
+    .center {
+      position: absolute; /* Position absolute for precise placement */
+      top: 30%; /* Positioning from the top */
+      left: 60%; /* Positioning from the left */
+      transform: translate(-50%, -50%); /* Centering the image */
+    }
+
+    .buttons {
+      position: absolute; /* Position absolute for precise placement */
+      top: 60%; /* Positioning from the top */
+      left: 50%; /* Positioning from the left */
+      transform: translate(-50%, -50%); /* Centering the image */
+    }
+    </style>
+    
+    <div class="header"></div>
+
   </head>
   <style>
     body {
-      background-color: rgb(155, 225, 221);
+      background-color: white;
     }
   </style>
   <body>
-    <div
+    <!-- <div
       class="max-w-xl m-auto h-screen flex flex-col align-center justify-center"
-    >
-    <img src="./images/BartholmewCoquette.png" width="400" />
-      <div class="flex flex-col w-full items-center justify-center bg-grey-lighter">
-        <label
-          class="w-64 flex flex-col items-center px-4 py-7 bg-white text-gray-500 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:text-teal-800"
-        >
+    > -->
+    <div style="position: absolute; top: 10px; left: 100px">
+      <img src="./images/BartholmewCoquette.png" width="400" />
+    </div>
 
-          <span class="mt-2 leading-normal">Select Folder</span>
-          <input id="filepicker" type="file" class="hidden" webkitdirectory directory multiple/>
-          <button onclick="getDirectory()"></button>
-          <div id="currentDirectory"></div>
-          <!-- <input id="filepicker" type="file" class="hidden"> -->
-        </label>
-      </div>
+    <div class="flex flex-col w-full items-center justify-center bg-grey-lighter">
+      <label
+        class="w-64 flex flex-col items-center px-4 py-7 bg-white text-gray-500 rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:text-teal-800"
+      >
+
+        <span class="mt-2 leading-normal">Upload</span>
+        <input id="filepicker" type="file" class="hidden" webkitdirectory directory multiple/>
+        <button onclick="getDirectory()"></button>
+        <div id="currentDirectory"></div>
+        <!-- <input id="filepicker" type="file" class="hidden"> -->
+      </label>
+    </div>
 
       <!-- Form -->
-      <form id="img-form" class="hidden">
-        <div class="mt-6">
-          <label class="mt-1 block text-white text-center w-80 m-auto py-3 shadow-sm border-gray-300 rounded-md">Width</label>
-          <input
-            type="number"
-            name="width"
-            id="width"
-            class="mt-1 block w-80 m-auto p-3 shadow-sm border-gray-300 rounded-md"
-            placeholder="Width"
-          />
-        </div>
-
-        <div class="mt-4">
-          <label class="mt-1 block text-white text-center w-80 m-auto py-3 shadow-sm border-gray-300 rounded-md">Height</label>
-          <input
-            type="number"
-            name="height"
-            id="height"
-            class="mt-1 block w-80 m-auto p-3 shadow-sm border-gray-300 rounded-md"
-            placeholder="Height"
-          />
-        </div>
+      <form id="img-form">
 
         <!-- Button -->
         <div class="mt-6">
-          <button
-            type="submit"
-            class="w-80 m-auto flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-500 hover:bg-teal-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            Upload
-          </button>
-        <div class="mt-4">
-          <button
-            type="button"
-            class="w-80 m-auto flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-500 hover:bg-teal-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            onclick = "fetchData()"
-          >
-            Sort
-          </button>
+            <button
+              type="button"
+              onclick="goToSortWindow()"
+              class="w-80 m-auto flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-500 hover:bg-teal-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+              Sort
+            </button>
         </div>
 
         <!-- <script>
@@ -96,10 +97,10 @@
           <button
             type="button"
             class="w-80 m-auto flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-500 hover:bg-teal-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            onclick = "fetchData()"
           >
             Clean
           </button>
+        </div>
 
           <!-- <script>
             function fetchData() {
@@ -116,9 +117,6 @@
 
       </form>
 
-      <p class="text-white text-lg text-center font-mono mt-6"><strong>Folder: </strong><span id="filename"></span></p>
-      <!-- Delete hardcoded path -->
-      <p class="text-white text-lg text-center font-mono mt-2"><strong>Output: </strong><span id="output-path"></span></p>
     </div>
   </body>
 </html>
