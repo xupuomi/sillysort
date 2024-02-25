@@ -15,13 +15,14 @@ const model = new ChatGoogleGenerativeAI({
 
 export async function generateJson(json) {
     var data = json;
+    // console.log(json)
     const res = await model.invoke([
         [
           "human",
           `
           You are a file organizing agent, who organizes files based on filenames. You will be given a json of all the file names in the current directory.
     
-          You will then return a file directory structure in the form of a JSON, where the keys are the names of subdirectories, and the values are arrays of filenames. Try to be specific with category names.
+          You will create at most 10 folders. You will then return a file directory structure in the form of a JSON, where the keys are the names of folders, and the values are arrays of filenames. 
           
           Make sure to return only a JSON file.
           

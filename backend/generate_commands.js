@@ -13,11 +13,12 @@ var commands = []
 //     console.log(commands)
 // });
 
-generateOutput("/Users/kaustubhkhulbe/Documents/Test");
+generateOutput("/Users/kaustubhkhulbe/Documents/Test/");
 
 async function generateOutput(filePath) {
     const json = readDir(filePath);
     var res = await generateJson(json);
+    console.log(res);
     allCommands(res, "", filePath);
     // console.log(commands);
     printCommands();
@@ -27,20 +28,24 @@ async function generateOutput(filePath) {
 function readDir(dir) {
     // console.log("Started.");
     const files = readFilesSync(dir);
+    //console.log(files)
     var fileNameObj = {}
     for (const [key, value] of Object.entries(files)) {
-        fileNameObj[value['name']] = {
+        // console.log(value['ext'])
+        fileNameObj[value['name']] = { //+ value['ext']
             "filepath": value['filepath'],
         }
             
     }
-
+    console.log(fileNameObj); 
+    console.log("///////////////////");
     return fileNameObj
 }
 function readFilesSync(dir) {
     const files = [];
   
     fs.readdirSync(dir).forEach(filename => {
+    //console.log(filename)
       const name = path.parse(filename).name;
       const ext = path.parse(filename).ext;
       const filepath = path.resolve(dir, filename);
@@ -73,9 +78,9 @@ function allCommands(data, curr_path, absolutePath) {
 }
 
 function addCommands(name, data, curr_path, absolutePath) {
-    commands.push(`mkdir -p ${absolutePath}${curr_path}/${name}`)
+    commands.push(`mkdir -p "${absolutePath}${curr_path}/${name}"`)
     for (var i = 0; i < data.length; i++) {
-        commands.push(`mv ${absolutePath}/${data[i]} ${absolutePath}${curr_path}/${name}/${data[i]}`)
+        commands.push(`mv "${absolutePath}/${data[i]}" "${absolutePath}${curr_path}/${name}/${data[i]}"`)
     }
 }
 
@@ -88,7 +93,7 @@ function addCommands(name, data, curr_path, absolutePath) {
 function printCommands() {
     for (var i = 0; i < commands.length; i++) {
         const cmd = commands[i];
-        console.log('\x1b[36m%s\x1b[0m', `${cmd}`)
+        // console.log('\x1b[36m%s\x1b[0m', `${cmd}`)
     }
 }
 
@@ -96,7 +101,7 @@ function runCommands() {
     for (let i = 0; i < commands.length; i++) {
         exec(commands[i]);
         console.log(`Executed Command ${i}`);
-        sleep(30);
+        sleep(50);
     }
 }
 
