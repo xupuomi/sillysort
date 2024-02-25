@@ -31,7 +31,10 @@
         >
 
           <span class="mt-2 leading-normal">Select Folder</span>
-          <input id="filepicker" type="file" class="hidden" webkitdirectory multiple/>
+          <input id="filepicker" type="file" class="hidden" webkitdirectory directory multiple/>
+          <button onclick="getDirectory()"></button>
+          <div id="currentDirectory"></div>
+          <!-- <input id="filepicker" type="file" class="hidden"> -->
         </label>
       </div>
 
@@ -113,8 +116,9 @@
 
       </form>
 
-      <p class="text-white text-lg text-center font-mono mt-6"><strong>File: </strong><span id="filename"></span></p>
+      <p class="text-white text-lg text-center font-mono mt-6"><strong>Folder: </strong><span id="filename"></span></p>
       <!-- Delete hardcoded path -->
+      <p class="text-white text-lg text-center font-mono mt-2"><strong>Output: </strong><span id="output-path"></span></p>
     </div>
   </body>
 </html>
