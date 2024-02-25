@@ -1,19 +1,21 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { generateJson } from './llm_grouper.js';
 
-const filePath = "/Users/kaustubhkhulbe/Documents/2024/CS/SillySort/backend/data.json"
 var commands = []
-var data = JSON.parse(fs.readFileSync(filePath));
-for (const [key, value] of Object.entries(data)) {
-    if (key != "Delete") addCommands(key, value)
-    else {
-        deleteCommands(value)
-    }
+
+generateOutput("/Users/kaustubhkhulbe/Downloads/");
+
+async function generateOutput(filePath) {
+    const json = readDir(filePath);
+    var res = await generateJson(json);
+    allCommands(res);
+    printCommands();
+    // console.log(commands);
 }
 
-printCommands();
-// readDir('/Users/kaustubhkhulbe/Downloads/')
 function readDir(dir) {
+    // console.log("Started.");
     const files = readFilesSync(dir);
     var fileNameObj = {}
     for (const [key, value] of Object.entries(files)) {
@@ -23,11 +25,14 @@ function readDir(dir) {
             
     }
 
-    fs.writeFile("out.json", JSON.stringify(fileNameObj), function(err) {
-        if (err) {
-            console.log(err);
-        }
-    });
+    // fs.writeFile("/frontend/out.json", JSON.stringify(fileNameObj), function(err) {
+    //     if (err) {
+    //         console.log(err);
+    //     }
+    // });
+    // console.log("Started.");
+
+    return fileNameObj
 }
 function readFilesSync(dir) {
     const files = [];
@@ -50,6 +55,17 @@ function readFilesSync(dir) {
   
     return files;
   }
+
+function allCommands(data) {
+    // console.log(data)
+    for (const [key, value] of Object.entries(data)) {
+        console.log(key + ", " + value)
+        if (key != "Delete") addCommands(key, value)
+        else {
+            deleteCommands(value)
+        }
+    }
+}
 
 function addCommands(name, data) {
     commands.push(`mkdir ${name}`)
