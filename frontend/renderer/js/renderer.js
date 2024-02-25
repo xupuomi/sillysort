@@ -47,7 +47,11 @@ function getDirectory() {
     // return directory;
     let relativeDirectory = files[0].webkitRelativePath;
     let relativeDirectories = relativeDirectory.split("/");
-    directories = fullDirectory.split("\\");
+    if (isMac) {
+        directories = fullDirectory.split("/");
+    } else {
+        directories = fullDirectory.split("\\");
+    }
     // console.log(directories);
     // console.log("Hello World");
     // console.log(relativeDirectories[0]);
