@@ -7,6 +7,10 @@
     "author": "Bartholmew",
     "license": "UNLICENSED",
     "scripts": {
-    "start": "electron ."
+        "start": "electron ."
+    },
+    "dependencies": {
+        "child_process": "^1.0.2",
+        "electron": "^29.0.1"
     }
 }
