@@ -1,0 +1,25 @@
+{
+    ".config": [],
+    "Assignments": {
+        "Subfolder": {
+            "SUBSUBSUBFolder": [
+                "CS 361 Textbook.pdf",
+                "LING 307 HW 2.pdf",
+                "Math415_Spring2019_Midterm1_exams.pdf",
+                "1_Module_Assignment.pdf",
+                "1_Module_Assignment.ipynb",
+                "HW_2.pdf",
+                "HW_0.pdf",
+                "HW_3.pdf"
+            ]
+        },
+        "Subfolder2": [
+            "HW_1.pdf",
+            "discussion-problems.pdf"
+        ]
+    },
+    "Cover Letters": [
+        "Ascend Analytics Cover Letter.pdf",
+        "Joby Cover Letter.pdf"
+    ]
+}

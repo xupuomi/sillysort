@@ -10,12 +10,16 @@
     "start": "electron ."
   },
   "dependencies": {
+    "@langchain/google-genai": "^0.0.10",
     "@robzzson/silhouette": "^0.0.7",
     "@xenova/transformers": "^2.15.1",
     "density-clustering": "^1.3.0",
+    "dotenv": "^16.4.5",
+    "electron": "^29.0.1",
+    "fs": "^0.0.1-security",
     "kmeansjs": "^0.0.3",
-    "ml-kmeans": "^6.0.0"
+    "ml-kmeans": "^6.0.0",
+    "path": "^0.12.7"
   },
   "type": "module"
-  }
-  
+}
