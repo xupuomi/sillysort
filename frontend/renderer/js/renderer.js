@@ -21,10 +21,17 @@
 //   );
 
 //write a function that will recieve the uploaded files and get their absolute paths.
-function getAbsolutePaths(e){
-    const files = e.target.files;
-    const filesArray = Array.from(files);
-    const absolutePaths = filesArray.map(file => file.path);
+function getAbsolutePaths() {
+    // const files = e.target.files;
+    // const filesArray = Array.from(files);
+    // const absolutePaths = filesArray.map(file => file.path);
+    // console.log(absolutePaths);
+    // return absolutePaths;
+    let filepicker = document.getElementById("filepicker");
+    let absolutePaths = [];
+    for (const file of filepicker.files) {
+        absolutePaths.push(file.path);
+    }
     console.log(absolutePaths);
     return absolutePaths;
 }    
