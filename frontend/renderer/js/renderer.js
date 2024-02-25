@@ -1,5 +1,10 @@
-// const outputPath = document.querySelector('#output-path');
-// const filename = document.querySelector('#filename');
+const { ipcRenderer } = require('electron'); 
+
+document.getElementById('sort-button').addEventListener('click', () => {
+    ipcRenderer.send('sort');
+});
+
+
 
 // function loadFile(e) {
 //     const file = e.target.files[0];
@@ -34,4 +39,35 @@ function getAbsolutePaths() {
     }
     console.log(absolutePaths);
     return absolutePaths;
-}    
+}
+
+function getDirectory() {
+    let files = document.getElementById("filepicker").files;
+    let fullDirectory = files[0].path;
+    // console.log(fullDirectory);
+    // fullDirectory = fullDirectory.replace(/"\\"/g, "/");
+    // console.log(fullDirectory);
+    // //let relativeDirectory = fullDirectory.substring(0, fullDirectory.lastIndexOf("\\"));
+    // let relativeDirectory = files[0].webkitRelativePath;
+    // console.log(relativeDirectory);
+    // directory = fullDirectory.replace(relativeDirectory, "");
+    // console.log(directory);
+    // return directory;
+    let relativeDirectory = files[0].webkitRelativePath;
+    let relativeDirectories = relativeDirectory.split("/");
+    if (navigator.userAgent.indexOf('Mac OS X') != -1) {
+        directories = fullDirectory.split("/");
+    } else {
+        directories = fullDirectory.split("\\");
+    }
+    // console.log(directories);
+    // console.log("Hello World");
+    // console.log(relativeDirectories[0]);
+    while (directories[directories.length - 1] != [relativeDirectories[0]]) {
+        directories.pop();
+    }
+    // console.log(directories);
+    let finalDirectory = directories.join("/");
+    // console.log(finalDirectory);
+    return finalDirectory;
+}
