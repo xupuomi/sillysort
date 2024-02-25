@@ -6,6 +6,7 @@ const path = require('path')
 const chat_google = require("@langchain/google-genai");
 const generative = require("@google/generative-ai");
 const dotenv = require("dotenv")
+const exec = require("child_process")
 dotenv.config();
 
 var commands = []
@@ -15,9 +16,11 @@ var commands = []
 async function generateOutput(filePath) {
     const json = readDir(filePath);
     var res = await generateJson(json);
-    allCommands(res);
-    printCommands();
+    console.log(res);
+    allCommands(res, "", filePath);
     // console.log(commands);
+    printCommands();
+    runCommands();
 }
 
 function readDir(dir) {
@@ -62,37 +65,50 @@ function readFilesSync(dir) {
     return files;
   }
 
-function allCommands(data) {
+  function allCommands(data, curr_path, absolutePath) {
     // console.log(data)
     for (const [key, value] of Object.entries(data)) {
-        console.log(key + ", " + value)
-        if (key != "Delete") addCommands(key, value)
-        else {
-            deleteCommands(value)
+        if (!Array.isArray(value)) {
+            // console.log(key + ",fsd " + value)
+            if (curr_path == "") allCommands(value, curr_path + key, absolutePath)
+            else allCommands(value, curr_path + "/" + key, absolutePath)
         }
+        else addCommands(key, value, curr_path, absolutePath)
     }
 }
 
-function addCommands(name, data) {
-    commands.push(`mkdir ${name}`)
+function addCommands(name, data, curr_path, absolutePath) {
+    commands.push(`mkdir -p "${absolutePath}${curr_path}/${name}"`)
     for (var i = 0; i < data.length; i++) {
-        commands.push(`mv ${data[i]} ./${name}/${data[i]}`)
+        commands.push(`mv "${absolutePath}/${data[i]}" "${absolutePath}${curr_path}/${name}/${data[i]}"`)
     }
 }
 
-function deleteCommands(data) {
-    for (var i = 0; i < data.length; i++) {
-        commands.push(`rm -rf ${data[i]}`)
-    }
-}
+// function deleteCommands(data, curr_path) {
+//     for (var i = 0; i < data.length; i++) {
+//         commands.push(`rm -rf ${data[i]}`)
+//     }
+// }
 
 function printCommands() {
     for (var i = 0; i < commands.length; i++) {
-        console.log(`[COMMAND ${i}]: ` + commands[i])
+        const cmd = commands[i];
+        console.log('\x1b[36m%s\x1b[0m', `${cmd}`)
     }
 }
 
-// console.log(process.env.GOOGLE_API_KEY);
+function runCommands() {
+    for (let i = 0; i < commands.length; i++) {
+        exec.exec(commands[i]);
+        console.log(`Executed Command ${i}`);
+        sleep(50);
+    }
+}
+
+function sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
 
 async function generateJson(json) {
     const model = new chat_google.ChatGoogleGenerativeAI({
@@ -194,11 +210,12 @@ ipcMain.on("save", (event, arg) => {
     // generateOutput("/Users/kaustubhkhulbe/Downloads/");
 }); 
 
-ipcMain.on("sort", (event, arg) => { 
-    console.log("HERE2");
+ipcMain.on("sort", async (event, arg) => { 
+    console.log("SORTING");
     // createSortWindow(); 
     // kill_me_now.kill_me_now();
     // generateOutput();
     console.log(USER_DEFINED_FILE_PATH);
-    // generateOutput("/Users/kaustubhkhulbe/Downloads/");
+    await generateOutput(USER_DEFINED_FILE_PATH);
+    // mainWindow.webContents.send('finished-save');
 }); 

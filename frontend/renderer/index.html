@@ -22,7 +22,7 @@
       padding: 0;
       position: relative;
     }
-    
+
     .header img {
       position: absolute;
       top: 70%;
@@ -39,29 +39,28 @@
     .step {
       font-size: 1.1em;
     }
-
-    </style>
-    
-    <div class="header">
-      <div>
-        <img src="./images/HackButtonsLogo.png" width="400"/>
-        <div style = "position: absolute; top: 405px; left: 70px; color: gray" >
-          <p class="step"> step 1: upload file folder </p>
-        </div>
-        <div style = "position: absolute; top: 525px; left: 890px; color: gray" >
-          <p class="step">step 2: click sort!</p>
-        </div>
-      </div>
-    </div>
-
-  </head>
-  <style>
-    body {
-      background-color: white;
-    }
   </style>
 
-  <div class="header"></div>
+  <div class="header">
+    <div>
+      <img src="./images/HackButtonsLogo.png" width="400" />
+      <div style="position: absolute; top: 405px; left: 70px; color: gray">
+        <p class="step"> step 1: upload file folder </p>
+      </div>
+      <div style="position: absolute; top: 525px; left: 890px; color: gray">
+        <p class="step">step 2: click sort!</p>
+      </div>
+    </div>
+  </div>
+
+</head>
+<style>
+  body {
+    background-color: white;
+  }
+</style>
+
+<div class="header"></div>
 
 </head>
 <style>
@@ -74,30 +73,29 @@
   <!-- <div
       class="max-w-xl m-auto h-screen flex flex-col align-center justify-center"
     > -->
-    <div style = "position: absolute; top: 560px; left: 402px; color: pink" >
-      <p>by Bartholmew</p>
-    </div>
+  <div style="position: absolute; top: 560px; left: 402px; color: pink">
+    <p>by Bartholmew</p>
+  </div>
 
-    <div style="position: absolute; top: 250px; left: 350px">
-      <img src="./images/BartholmewCoquette.png" width="500" />
-    </div>
+  <div style="position: absolute; top: 250px; left: 350px">
+    <img src="./images/BartholmewCoquette.png" width="500" />
+  </div>
 
-    <div style="position: absolute; top: 430px; left: 265px">
-      <img src="./images/HackArrowBlueReverse.png" width="45" />
-    </div>
+  <div style="position: absolute; top: 430px; left: 265px">
+    <img src="./images/HackArrowBlueReverse.png" width="45" />
+  </div>
 
-    <div style="position: absolute; top: 430px; left: 850px">
-      <img src="./images/HackArrowYellowReverse.png" width="40" />
-    </div>
+  <div style="position: absolute; top: 430px; left: 850px">
+    <img src="./images/HackArrowYellowReverse.png" width="40" />
+  </div>
 
-    <div style="position: absolute; top: 500px; left: 100px">
-    <div class="flex flex-col w-full justify-center bg-grey-lighter">
+  <div style="position: absolute; top: 500px; left: 100px">
+    <div id="wrapper-save" class="flex flex-col w-full justify-center bg-grey-lighter">
       <label
-        class="w-20 flex flex-col px-4 py-7 bg-none text-gray-200 rounded-lg tracking-wide uppercase cursor-pointer hover:text-teal-300"
-      >
-      <img src = "./images/HackButtonsUpload.png" width="200">
+        class="w-20 flex flex-col px-4 py-7 bg-none text-gray-200 rounded-lg tracking-wide uppercase cursor-pointer hover:text-teal-300">
+        <img src="./images/HackButtonsUpload.png" width="200">
         <span class="mt-20 leading-normal"></span>
-        <input id="filepicker" type="file" class="hidden" webkitdirectory directory multiple/>
+        <input id="filepicker" type="file" class="hidden" webkitdirectory directory multiple />
         <button id="save-path"></button>
         <div id="currentDirectory"></div>
         <!-- <input id="filepicker" type="file" class="hidden"> -->
@@ -108,23 +106,19 @@
   <!-- Form -->
   <form id="img-form">
 
-        <!-- Button -->
-        <div class="mt-6">
-          <div class="m-auto flex">
-            <div style="position: absolute; top: 300px; left: 850px" >
-            <button id="sort-button"
-            type="button"
-            onclick="goToSortWindow()"
-            class="image-button"
-          >
-          <!-- class="w-80 m-auto flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-500 hover:bg-teal-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" -->
-            <img src="./images/HackButtonsSort.png" width = "200" onclick="goToSortWindow()"/>
+    <!-- Button -->
+    <div class="mt-6">
+      <div class="m-auto flex">
+        <div style="position: absolute; top: 300px; left: 850px">
+          <button id="sort-button" type="button" onclick="goToSortWindow()" class="image-button">
+            <!-- class="w-80 m-auto flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-500 hover:bg-teal-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" -->
+            <img src="./images/HackButtonsSort.png" width="200" onclick="goToSortWindow()" />
           </button>
-            
-          </div>
-          </div>
-          
+
         </div>
+      </div>
+
+    </div>
 
     <!-- <script>
           function fetchData() {
@@ -139,9 +133,10 @@
           }
         </script> -->
 
-      </form>
-    </div>
-  </body>
+  </form>
+  </div>
+</body>
+
 </html>
 
 

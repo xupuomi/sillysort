@@ -4,9 +4,13 @@ document.getElementById('sort-button').addEventListener('click', () => {
     ipcRenderer.send('sort');
 });
 
-document.getElementById('save-path').addEventListener('click', () => {
+document.getElementById('wrapper-save').addEventListener('click', () => {
     ipcRenderer.send('save', getDirectory());
 })
+
+ipcRenderer.on('finished-save', (event, customData) => {
+    console.log("FINISHED SAVE");
+});
 
 // function loadFile(e) {
 //     const file = e.target.files[0];
