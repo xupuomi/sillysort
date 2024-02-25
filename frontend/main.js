@@ -1,5 +1,5 @@
 const path = require('path');
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 
 const isDev = process.env.NODE_ENV !== 'production';
 const isMac = process.platform === 'darwin';
@@ -34,3 +34,39 @@ app.on('window-all-closed', () => {
         app.quit()
     }
 })
+
+const ipc = require('electron').ipcRenderer; 
+
+function goToSortWindow(){ 
+    console.log("HERE");
+    ipc.send('openSortWindow');   
+}
+
+function createSortWindow() { 
+    sortWindow = new BrowserWindow({ 
+        width: 1000, 
+        height: 700, 
+        modal: true, 
+        show: false, 
+        parent: mainWindow, // Make sure to add parent window here 
+
+        // Make sure to add webPreferences with below configuration 
+        webPreferences: { 
+        nodeIntegration: true, 
+        contextIsolation: false, 
+        enableRemoteModule: true, 
+        }, 
+    }); 
+
+    // sort window loads settings.html file 
+    sortWindow.loadFile("../endpage.html"); 
+
+    sortWindow.once("ready-to-show", () => { 
+        sortWindow.show(); 
+    }); 
+}
+
+ipcMain.on("openSortWindow", (event, arg) => { 
+    console.log("HERE");
+    createSortWindow(); 
+}); 
