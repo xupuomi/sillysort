@@ -27,7 +27,7 @@ app.whenReady().then(() => {
     });
 });
 
-
+let USER_DEFINED_FILE_PATH;
 
 app.on('window-all-closed', () => {
     if(!isMac){
