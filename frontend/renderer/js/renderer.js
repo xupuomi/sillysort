@@ -1,15 +1,12 @@
+const { ipcRenderer } = require('electron'); 
 
+document.getElementById('sort-button').addEventListener('click', () => {
+    ipcRenderer.send('sort');
+});
 
-
-
-
-
-
-
-
-
-
-
+document.getElementById('save-path').addEventListener('click', () => {
+    ipcRenderer.send('save', getDirectory());
+})
 
 // function loadFile(e) {
 //     const file = e.target.files[0];

@@ -7,6 +7,12 @@
     "author": "Bartholmew",
     "license": "UNLICENSED",
     "scripts": {
-    "start": "electron ."
+        "start": "electron ."
+    },
+    "dependencies": {
+        "@langchain/google-genai": "^0.0.10",
+        "dotenv": "^16.4.5",
+        "electron": "^29.0.1",
+        "node-fetch": "^2.6.1"
     }
 }

@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; style-src 'self' *.googleapis.com 'unsafe-inline' https://fonts.googleapis.com;"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="js/renderer.js" defer></script>
-    <title>SILLYsort</title>
-    <style>
-      .header {
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy"
+    content="script-src 'self' 'unsafe-inline'; style-src 'self' *.googleapis.com 'unsafe-inline' https://fonts.googleapis.com;" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/renderer.js" defer></script>
+  <button id="myButton">Click me</button>
+  <title>SILLYsort</title>
+  <style>
+    .header {
       background-color: rgb(155, 225, 221);
       height: 33.33vh;
       margin-top: 0;
       padding: 0;
-      position: relative; 
+      position: relative;
     }
     
     .header img {
@@ -60,8 +60,18 @@
       background-color: white;
     }
   </style>
-  <body>
-    <!-- <div
+
+  <div class="header"></div>
+
+</head>
+<style>
+  body {
+    background-color: white;
+  }
+</style>
+
+<body>
+  <!-- <div
       class="max-w-xl m-auto h-screen flex flex-col align-center justify-center"
     > -->
     <div style = "position: absolute; top: 560px; left: 402px; color: pink" >
@@ -88,22 +98,21 @@
       <img src = "./images/HackButtonsUpload.png" width="200">
         <span class="mt-20 leading-normal"></span>
         <input id="filepicker" type="file" class="hidden" webkitdirectory directory multiple/>
-        <button onclick="USER_DEFINED_FILE_PATH = getDirectory()"></button>
+        <button id="save-path"></button>
         <div id="currentDirectory"></div>
         <!-- <input id="filepicker" type="file" class="hidden"> -->
       </label>
     </div>
   </div>
 
-      <!-- Form -->
-      <form id="img-form">
+  <!-- Form -->
+  <form id="img-form">
 
         <!-- Button -->
         <div class="mt-6">
           <div class="m-auto flex">
             <div style="position: absolute; top: 300px; left: 850px" >
-              <button
-            id="sortButton"
+            <button id="sort-button"
             type="button"
             onclick="goToSortWindow()"
             class="image-button"
@@ -117,7 +126,7 @@
           
         </div>
 
-        <!-- <script>
+    <!-- <script>
           function fetchData() {
             fetch('/backend/filestructure.json')
               .then(response => response.json())
