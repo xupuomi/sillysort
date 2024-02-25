@@ -67,14 +67,49 @@
           >
             Upload
           </button>
-
         <div class="mt-4">
           <button
             type="button"
             class="w-80 m-auto flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-500 hover:bg-teal-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            onclick = "fetchData()"
           >
             Sort
           </button>
+        </div>
+
+        <script>
+          function fetchData() {
+            fetch('/backend/filestructure.json')
+              .then(response => response.json())
+              .then(data => {
+                console.log(data);
+              })
+              .catch(error => {
+                console.error(error);
+              });
+          }
+        </script>
+        <div class="mt-4">
+          <button
+            type="button"
+            class="w-80 m-auto flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-500 hover:bg-teal-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            onclick = "fetchData()"
+          >
+            Clean
+          </button>
+
+          <script>
+            function fetchData() {
+              fetch('/backend/filestructure.json')
+                .then(response => response.json())
+                .then(data => {
+                  console.log(data);
+                })
+                .catch(error => {
+                  console.error(error);
+                });
+            }
+          </script>
 
       </form>
 

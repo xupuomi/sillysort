@@ -6,8 +6,9 @@ const isMac = process.platform === 'darwin';
 function createMainWindow() {
     const mainWindow = new BrowserWindow({
         title: 'SILLYsort',
-        width: isDev ? 1000 : 500,
-        height: 600
+        width: 1200,
+        height: 800,
+        resizable: false
     });
 
     //Open devtools if in dev env
@@ -25,6 +26,8 @@ app.whenReady().then(() => {
         }
     });
 });
+
+
 
 app.on('window-all-closed', () => {
     if(!isMac){
