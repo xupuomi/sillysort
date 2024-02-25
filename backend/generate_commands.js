@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { generateJson } from './llm_grouper.js';
+import { exec } from 'child_process';
 
 var commands = []
 
@@ -12,13 +13,15 @@ var commands = []
 //     console.log(commands)
 // });
 
-generateOutput("/Users/kaustubhkhulbe/Downloads");
+generateOutput("/Users/kaustubhkhulbe/Documents/Test");
 
 async function generateOutput(filePath) {
     const json = readDir(filePath);
     var res = await generateJson(json);
     allCommands(res, "", filePath);
-    console.log(commands);
+    // console.log(commands);
+    printCommands();
+    runCommands();
 }
 
 function readDir(dir) {
@@ -56,21 +59,23 @@ function readFilesSync(dir) {
     return files;
   }
 
+  /// @todo add handling case for when there is a space in a path
 function allCommands(data, curr_path, absolutePath) {
     // console.log(data)
     for (const [key, value] of Object.entries(data)) {
         if (!Array.isArray(value)) {
             // console.log(key + ",fsd " + value)
-            allCommands(value, curr_path + "/" + key, absolutePath)
+            if (curr_path == "") allCommands(value, curr_path + key, absolutePath)
+            else allCommands(value, curr_path + "/" + key, absolutePath)
         }
         else addCommands(key, value, curr_path, absolutePath)
     }
 }
 
 function addCommands(name, data, curr_path, absolutePath) {
-    commands.push(`mkdir -p ${curr_path}/${name}`)
+    commands.push(`mkdir -p ${absolutePath}${curr_path}/${name}`)
     for (var i = 0; i < data.length; i++) {
-        commands.push(`mv ${absolutePath}/${data[i]} ${absolutePath}/${curr_path}/${name}/${data[i]}`)
+        commands.push(`mv ${absolutePath}/${data[i]} ${absolutePath}${curr_path}/${name}/${data[i]}`)
     }
 }
 
@@ -82,6 +87,20 @@ function addCommands(name, data, curr_path, absolutePath) {
 
 function printCommands() {
     for (var i = 0; i < commands.length; i++) {
-        console.log(`[COMMAND ${i}]: ` + commands[i])
+        const cmd = commands[i];
+        console.log('\x1b[36m%s\x1b[0m', `${cmd}`)
     }
+}
+
+function runCommands() {
+    for (let i = 0; i < commands.length; i++) {
+        exec(commands[i]);
+        console.log(`Executed Command ${i}`);
+        sleep(30);
+    }
+}
+
+function sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
 }

@@ -30,5 +30,21 @@ export async function generateJson(json) {
           `,
         ],
       ]);
-    return JSON.parse(res.content.substring(3, res.content.length - 3));
+    // console.log(res.content);
+    let begin = 0;
+    let end = 0;
+    for (let i = 0; i < res.content.length; i++) {
+      if (res.content[i] == "{") {
+        begin = i;
+        break;
+      }
+    }
+    for (let i = res.content.length - 1; i >= 0; i--) {
+      if (res.content[i] == "}") {
+        end = i;
+        break;
+      }
+    }
+    // console.log(res.content.substring(begin, end+1));
+    return JSON.parse(res.content.substring(begin, end+1));
 }
